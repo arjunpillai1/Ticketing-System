@@ -1,0 +1,2 @@
+Armanya, 34020154945, [milk, veg], [123, 485]
+arjun, 848415, [peanuts, tree nuts], [4844, 9448]
