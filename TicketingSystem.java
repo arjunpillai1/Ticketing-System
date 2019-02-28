@@ -181,14 +181,14 @@ public class TicketingSystem extends JFrame{
     returnFromEditButton.setBorder(null);
     
     //Set button locations
-    addStudentButton.setBounds(135, 15, 230, 50);
-    modifyStudentsButton.setBounds(135, 115, 231, 50);
-    modifyStudentsButton2.setBounds(135, 15, 230, 50);
-    removeStudentButton.setBounds(135, 115, 231, 50);
-    clearStudentsButton.setBounds(135, 215, 231, 50);
-    generateFloorPlanButton.setBounds(135, 215, 231, 50);
-    displayFloorPlanButton.setBounds(135, 315, 230, 50);
-    exitProgramButton.setBounds(135, 415, 231, 50);
+    addStudentButton.setBounds(135, 10, 230, 50);
+    modifyStudentsButton.setBounds(135, 110, 231, 50);
+    modifyStudentsButton2.setBounds(135, 10, 230, 50);
+    removeStudentButton.setBounds(135, 110, 231, 50);
+    clearStudentsButton.setBounds(135, 210, 231, 50);
+    generateFloorPlanButton.setBounds(135, 210, 231, 50);
+    displayFloorPlanButton.setBounds(135, 310, 230, 50);
+    exitProgramButton.setBounds(135, 410, 231, 50);
     submitInfoButton.setBounds(135, 300, 231, 50);
     returnButton.setBounds(135, 375, 231, 50);
     submitInfoRemoveButton.setBounds(135, 300, 231, 50);
@@ -519,6 +519,7 @@ public class TicketingSystem extends JFrame{
     dietaryRestrictionsText = "";
     friendStudentNumbersText = "";
     studentNumToModify = modifyStudentField.getText();
+    modifyStudentField.setText("");
     if (studentNumbers.contains(studentNumToModify)) {
       for (int i = 0; i < students.size(); i++) {
         if (students.get(i).getStudentNumber().equals(studentNumToModify)) {
@@ -656,11 +657,13 @@ public class TicketingSystem extends JFrame{
         overallPanel.add(modifyStudentsPanel, new Integer(100));
         frame.repaint();
       } else if (press.getSource() == submitInfoModifyButton) {
-        overallPanel.removeAll();
-        overallPanel.add(backgroundPanel, new Integer(0));
-        overallPanel.add(modifyStudents2Panel, new Integer(100));
-        frame.repaint();
         studentToModify = modifyStudent();
+        if (studentToModify != -1) {
+          overallPanel.removeAll();
+          overallPanel.add(backgroundPanel, new Integer(0));
+          overallPanel.add(modifyStudents2Panel, new Integer(100));
+          frame.repaint();
+        }
       } else if (press.getSource() == submitInfoEditButton) {
         if (studentToModify != -1) {
           editStudent(studentToModify);
